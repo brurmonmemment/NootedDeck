@@ -25,27 +25,17 @@ after that, follow ChefKiss' roadmap to Steam Deck "greatness"
 
 <hr>
 
-### roadmap
-
-|- [] develop navi 24-ish support via nootrx' navi 23 logic in NootRX
-
-|- [] rewrite firmware injection method to align with the linux driver unless i can somehow figure out how to get or make the files that nootedred uses and understand how its loaded compared to linux's amdgpu
-
-|- [X] modify the model code to only include LCD and OLED ids
-
-|- [X] write van gogh specific code for X6000 and X6000 framebuffer
-
-|
-
-|- [] merge navi 21-23 logic from nootrx and add prev mentioned navi 24 code
-
-|
-
-|- [] merge rdna 2 (igpu) specific code & sprinkle in some steam deck bits
-
-|
-
-|- [not even close] finish!!!
+>[Roadmap]
+>- [] develop navi 24-ish support via nootrx' navi 23 logic in NootRX
+>- [] rewrite firmware injection method to align with the linux driver unless i can somehow figure out how to get or make the files that nootedred uses and understand how its loaded compared to linux's amdgpu
+>- [X] modify the model code to only include LCD and OLED ids
+>- [X] write van gogh specific code for X6000 and X6000 framebuffer
+>- 
+>- [] merge navi 21-23 logic from nootrx and add prev mentioned navi 24 code
+>- 
+>- [] merge rdna 2 (igpu) specific code & sprinkle in some steam deck bits
+>-
+>- [not even close] finish!!!
 
 <hr>
 
