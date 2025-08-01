@@ -15,31 +15,40 @@ A kext designed to get the Steam Deck's LCD and OLED GPUs working (Van Gogh)
 
 <hr>
 
-## current status
+## Current Status
 
-forking nootedred for our purposes, getting to navi 24 logic somewhat soon
+Manually forking NootedRed to have a better understanding of how the code works & make changes as we go.
 
-CURRENT OBJECTIVE: finish forking NootedRed
-
-after that, follow ChefKiss' roadmap to Steam Deck "greatness"
+### Current Objective: finish forking NootedRed (need to work on AMDGPUDrivers in Kext/Headers)
 
 <hr>
 
->[Roadmap]
->- [] develop navi 24-ish support via nootrx' navi 23 logic in NootRX
->- [] rewrite firmware injection method to align with the linux driver unless i can somehow figure out how to get or make the files that nootedred uses and understand how its loaded compared to linux's amdgpu
->- [X] modify the model code to only include LCD and OLED ids
->- [X] write van gogh specific code for X6000 and X6000 framebuffer
->- 
->- [] merge navi 21-23 logic from nootrx and add prev mentioned navi 24 code
->- 
->- [] merge rdna 2 (igpu) specific code & sprinkle in some steam deck bits
->-
->- [not even close] finish!!!
+# [Roadmap]
+## Stage 1A: Navi 24 (firmware) logic
+- [ ] develop navi 24-ish support via nootrx' navi 23 logic in NootRX locally
+- [ ] rewrite firmware injection method
+    - either start from the ground up and use amdgpu's firmware blobs and code
+    - OR figure out how the hell NootedRed handles this and where their files come from
+
+## Stage 1B: Van Gogh specifics
+- [X] modify the model code to only include LCD and OLED ids
+- [X] write van gogh specific code for X6000 and X6000 framebuffer
+
+## Stage 2: Integrate modern Navi logic into NootedDeck
+- [ ] merge previously mentioned navi 24 code into NootedDeck and resolve dependencies
+- [ ] merge RDNA 2 specific code & sprinkle in some VG-only bits
+
+## Stage 3: Final
+- [ ] start doing some real testing on the steam decks
+- [ ] debug issues and do some polishing n fixing
+- [ ] clean up this spaghetti code
+- [14%] FINISH!
 
 <hr>
 
 ### credits (definitely updating as the project continues to be worked on)
 
-- ChefKissInc for NootedRed and NootRX, without them absolutely 0% of this wouldve been possible, so huge thanks to them
-
+- ChefKissInc - NootedRed and NootRX dev, without them absolutely 0% of this wouldve been possible, so huge thanks to them
+    - Consider donating to them via [ko-fi](https://ko-fi.com/chefkiss) or BTC `bc1qgu56kptepex2csuzl5nhzc4vxuj8c6ggjzhcem`
+- brurmonemt - NootedDeck project leader
+- tiktop101 - Doesn't know much C++ but is still learning and supporting me, so big thanks to them too 
