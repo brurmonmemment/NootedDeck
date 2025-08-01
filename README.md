@@ -25,8 +25,6 @@ TODO: implement submodules from NootedRed, follow their roadmap to Steam Deck "g
 
 |- [] develop navi 24 support via nootrx
 
-|- [] modularize nooteddeck (already working on it during nred forking)
-
 |- [] develop correct firmware injection logic
 
 |- [X] develop improved device model name matching
