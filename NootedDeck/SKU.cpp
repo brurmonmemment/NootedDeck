@@ -37,7 +37,7 @@ static const SKU Dev163F[] =
     {MatchType::RevSubsys, 0xAE, 0x0123, 0x1002, "AMD Custom GPU 0405"},
 };
 
-static const SKU Dev1640[] =
+static const SKU Dev1435[] =
 {
     {MatchType::RevOnly, 0xAE, 0x0000, 0x0000, "AMD Custom GPU 0932"},
     {MatchType::RevSubsys, 0xAE, 0x0123, 0x1002, "AMD Custom GPU 0932"},
@@ -46,7 +46,7 @@ static const SKU Dev1640[] =
 static const DevicePair Devices[] =
 {
     {0x163F, Dev163F, sizeof(Dev163F) / sizeof(Dev163F), "AMD Custom GPU"}, // Van Gogh "Aerith" (LCD)
-    {0x1640, Dev1640, sizeof(Dev1640) / sizeof(Dev1640), "AMD Custom GPU"}, // Van Gogh "Sephiroth" (OLED)
+    {0x1435, Dev1435, sizeof(Dev1435) / sizeof(Dev1435), "AMD Custom GPU"}, // Van Gogh "Sephiroth" (OLED)
 };
 
 const char *GetSKUForDevice(IOPCIDevice *PCIDevice)

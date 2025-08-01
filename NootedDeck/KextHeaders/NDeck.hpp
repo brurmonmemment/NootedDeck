@@ -34,7 +34,7 @@ class NDeck
 
         void SetProperty32Bit(const char *Key, UInt32 Value);
         UInt32 ReadRegion32Bit(UInt32 Region) const;
-        void WriteReg32Bit(UInt32 Region, UInt32 Value) const;
+        void WriteRegion32Bit(UInt32 Region, UInt32 Value) const;
         UInt32 SMUWaitForResponse() const;
         CAILResult SendMsgToSMC(UInt32 Message, UInt32 Parameter = 0, UInt32 *OutParameter = nullptr) const;
 
