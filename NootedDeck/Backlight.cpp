@@ -136,7 +136,7 @@ void Backlight::ProcessKext(KernelPatcher &Patcher, size_t ID, mach_vm_address_t
 {
     if (RadeonX6000FramebufferKext.loadIndex == ID)
     {
-        if (NDeck::Singleton().getAttributes().IsSonoma1404Plus())
+        if (NDeck::Singleton().GetAttributes().IsSonoma1404PlusB())
         {
             Patcher+::PatternSolveRequest solveRequest {"_dc_link_set_backlight_level",
                 this->OrgDcLinkSetBacklightLevel, KDcLinkSetBacklightLevelPattern1404};

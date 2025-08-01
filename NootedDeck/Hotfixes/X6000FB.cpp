@@ -64,7 +64,7 @@ void Hotfixes::X6000FB::ProcessKext(KernelPatcher &Patcher, size_t ID, mach_vm_a
 
     if (checkKernelArgument("-NDeckDPDelay"))
     {
-        if (NDeck::Singleton().GetAttributes().IsSonoma1404Plus())
+        if (NDeck::Singleton().GetAttributes().IsSonoma1404PlusB())
         {
             Patcher+::PatternRouteRequest Request {"_dp_receiver_power_ctrl", wrapDpReceiverPowerCtrl,
                 this->OrgDpReceiverPowerCtrl, kDpReceiverPowerCtrlPattern1404};
@@ -79,7 +79,7 @@ void Hotfixes::X6000FB::ProcessKext(KernelPatcher &Patcher, size_t ID, mach_vm_a
         }
     }
 
-    if (NDeck::Singleton().GetAttributes().IsVenturaPlus())
+    if (NDeck::Singleton().GetAttributes().IsVenturaPlusB())
     {
         Patcher+::PatternSolveRequest SolveRequest{
             "__ZNK34AMDRadeonX6000_AmdRadeonController18messageAcceleratorE25_eAMDAccelIOFBRequestTypePvS1_S1_",
@@ -87,14 +87,14 @@ void Hotfixes::X6000FB::ProcessKext(KernelPatcher &Patcher, size_t ID, mach_vm_a
         PANIC_COND(!SolveRequest.solve(Patcher, ID, Slide, Size), "X6000FB", "Failed to resolve messageAccelerator");
     }
 
-    if (NDeck::Singleton().GetAttributes().IsVenturaPlus())
+    if (NDeck::Singleton().GetAttributes().IsVenturaPlusB())
     {
         Patcher+::PatternRouteRequest Request {"__ZN34AMDRadeonX6000_AmdRadeonController7powerUpEv",
             WrapControllerPowerUp, this->OrgControllerPowerUp};
         PANIC_COND(!Request.route(Patcher, ID, Slide, Size), "X6000FB", "Failed to route powerUp");
     }
 
-    if (NDeck::Singleton().GetAttributes().IsVenturaPlus())
+    if (NDeck::Singleton().GetAttributes().IsVenturaPlusB())
     {
         const Patcher+::MaskedLookupPatch Patches[] =
         {

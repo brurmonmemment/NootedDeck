@@ -55,24 +55,24 @@ static const UInt8 kPopulateDeviceInfoPatched[] {0xBE, 0x2F, 0x0D, 0x00, 0x00, 0
 
 // Neutralize `AmdAtomVramInfo` creation null check.
 // We don't have this entry in our VBIOS.
-static const UInt8 kAmdAtomVramInfoNullCheckOriginal[] = {0x48, 0x89, 0x83, 0x90, 0x00, 0x00, 0x00, 0x48, 0x85, 0xC0,
+static const UInt8 KAMDAtomVramInfoNullCheckOriginal[] = {0x48, 0x89, 0x83, 0x90, 0x00, 0x00, 0x00, 0x48, 0x85, 0xC0,
     0x0F, 0x84, 0x89, 0x00, 0x00, 0x00, 0x48, 0x8B, 0x7B, 0x18};
-static const UInt8 kAmdAtomVramInfoNullCheckPatched[] = {0x48, 0x89, 0x83, 0x90, 0x00, 0x00, 0x00, 0x66, 0x90, 0x66,
+static const UInt8 KAMDAtomVramInfoNullCheckPatched[] = {0x48, 0x89, 0x83, 0x90, 0x00, 0x00, 0x00, 0x66, 0x90, 0x66,
     0x90, 0x66, 0x90, 0x66, 0x90, 0x90, 0x48, 0x8B, 0x7B, 0x18};
 
 // Ditto
-static const UInt8 kAmdAtomVramInfoNullCheckOriginal1015[] = {0x48, 0x89, 0x83, 0x80, 0x00, 0x00, 0x00, 0x48, 0x85,
+static const UInt8 KAMDAtomVramInfoNullCheckOriginal1015[] = {0x48, 0x89, 0x83, 0x80, 0x00, 0x00, 0x00, 0x48, 0x85,
     0xC0, 0x74, 0x00};
-static const UInt8 kAmdAtomVramInfoNullCheckOriginalMask1015[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+static const UInt8 KAMDAtomVramInfoNullCheckOriginalMask1015[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
     0xFF, 0xFF, 0x00};
-static const UInt8 kAmdAtomVramInfoNullCheckPatched1015[] = {0x48, 0x89, 0x83, 0x80, 0x00, 0x00, 0x00, 0x66, 0x90, 0x66,
+static const UInt8 KAMDAtomVramInfoNullCheckPatched1015[] = {0x48, 0x89, 0x83, 0x80, 0x00, 0x00, 0x00, 0x66, 0x90, 0x66,
     0x90, 0x90};
 
 // Neutralize `AmdAtomPspDirectory` creation null check.
 // We don't have this entry in our VBIOS.
-static const UInt8 kAmdAtomPspDirectoryNullCheckOriginal[] = {0x48, 0x89, 0x83, 0x88, 0x00, 0x00, 0x00, 0x48, 0x85,
+static const UInt8 KAMDAtomPspDirectoryNullCheckOriginal[] = {0x48, 0x89, 0x83, 0x88, 0x00, 0x00, 0x00, 0x48, 0x85,
     0xC0, 0x0F, 0x84, 0xA1, 0x00, 0x00, 0x00, 0x48, 0x8B, 0x7B, 0x18};
-static const UInt8 kAmdAtomPspDirectoryNullCheckPatched[] = {0x48, 0x89, 0x83, 0x88, 0x00, 0x00, 0x00, 0x66, 0x90, 0x66,
+static const UInt8 KAMDAtomPspDirectoryNullCheckPatched[] = {0x48, 0x89, 0x83, 0x88, 0x00, 0x00, 0x00, 0x66, 0x90, 0x66,
     0x90, 0x66, 0x90, 0x66, 0x90, 0x90, 0x48, 0x8B, 0x7B, 0x18};
 
 // Neutralize `AmdAtomVramInfo` null check.
@@ -142,13 +142,13 @@ static const UInt8 kInitializeHardware2PatchedMask[] = {0xFF, 0xFF, 0xFF, 0xFF, 
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
 // 10.15: Disable DMCUB firmware loading from DAL. HWLibs should be doing that.
-static const UInt8 kAmdDalServicesInitializeOriginal[] = {0xBE, 0x01, 0x00, 0x00, 0x00, 0xE8, 0x00, 0x00, 0x00, 0x00,
+static const UInt8 KAMDDalServicesInitializeOriginal[] = {0xBE, 0x01, 0x00, 0x00, 0x00, 0xE8, 0x00, 0x00, 0x00, 0x00,
     0x49, 0x00, 0x00, 0x60};
-static const UInt8 kAmdDalServicesInitializeOriginalMask[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00,
+static const UInt8 KAMDDalServicesInitializeOriginalMask[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00,
     0x00, 0xFF, 0x00, 0x00, 0xFF};
-static const UInt8 kAmdDalServicesInitializePatched[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+static const UInt8 KAMDDalServicesInitializePatched[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00};
-static const UInt8 kAmdDalServicesInitializePatchedMask[] = {0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
+static const UInt8 KAMDDalServicesInitializePatchedMask[] = {0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00}; */ // Catalina Logic
 
 /* // Raven: Change cursor and underflow tracker count to 4 instead of 6.
@@ -220,15 +220,15 @@ void VanGogh::X6000FB::ProcessKext(KernelPatcher &Patcher, size_t ID, mach_vm_ad
         {"__ZNK15AmdAtomVramInfo16populateVramInfoER16AtomFirmwareInfo", PopulateVramInfo, kPopulateVramInfoPattern,
             KPopulateVramInfoPatternMask},
         {"__ZNK32AMDRadeonX6000_AmdAsicInfoNavi1027getEnumeratedRevisionNumberEv", getEnumeratedRevision},
-        {"__ZNK22AmdAtomObjectInfo_V1_421getNumberOfConnectorsEv", wrapGetNumberOfConnectors,
+        {"__ZNK22AmdAtomObjectInfo_V1_421getNumberOfConnectorsEv", WrapGetNumberOfConnectors,
             this->orgGetNumberOfConnectors, kGetNumberOfConnectorsPattern, kGetNumberOfConnectorsPatternMask},
     };
     PANIC_COND(!Patcher+::PatternRouteRequest::RouteAll(Patcher, ID, Requests, Slide, Size), "X6000FB",
         "Failed to route symbols");
 
-    if (NDeck::Singleton().GetAttributes().IsBigSurPlus()) {
+    if (NDeck::Singleton().GetAttributes().IsBigSurPlusB()) {
         KernelPatcher::RouteRequest Request {
-            "__ZN32AMDRadeonX6000_AmdRegisterAccess20createRegisterAccessERNS_8InitDataE", wrapCreateRegisterAccess,
+            "__ZN32AMDRadeonX6000_AmdRegisterAccess20createRegisterAccessERNS_8InitDataE", WrapCreateRegisterAccess,
             this->orgCreateRegisterAccess};
         PANIC_COND(!Patcher.routeMultiple(ID, &Request, 1, Slide, Size), "X6000FB",
             "Failed to route createRegisterAccess");
@@ -238,7 +238,7 @@ void VanGogh::X6000FB::ProcessKext(KernelPatcher &Patcher, size_t ID, mach_vm_ad
         kPopulateDeviceInfoMask, kPopulateDeviceInfoPatched, kPopulateDeviceInfoMask, 1};
     PANIC_COND(!Patch.apply(Patcher, Slide, Size), "X6000FB", "Failed to apply populateDeviceInfo Patch");
 
-    if (NDeck::Singleton().GetAttributes().IsSonoma1404Plus()) {
+    if (NDeck::Singleton().GetAttributes().IsSonoma1404PlusB()) {
         const Patcher+::MaskedLookupPatch Patches[] = {
             {&RadeonX6000FramebufferKext, kGetFirmwareInfoNullCheckOriginal1404,
                 kGetFirmwareInfoNullCheckOriginalMask1404, kGetFirmwareInfoNullCheckPatched1404,
@@ -259,15 +259,15 @@ void VanGogh::X6000FB::ProcessKext(KernelPatcher &Patcher, size_t ID, mach_vm_ad
             "Failed to apply patches");
     }
 
-    /* if (NDeck::Singleton().GetAttributes().IsCatalina())
+    /* if (NDeck::Singleton().GetAttributes().IsCatalinaB())
     {
-        const Patcher+::MaskedLookupPatch Patch {&RadeonX6000FramebufferKext, kAmdAtomVramInfoNullCheckOriginal1015,
-            kAmdAtomVramInfoNullCheckOriginalMask1015, kAmdAtomVramInfoNullCheckPatched1015, 1};
+        const Patcher+::MaskedLookupPatch Patch {&RadeonX6000FramebufferKext, KAMDAtomVramInfoNullCheckOriginal1015,
+            KAMDAtomVramInfoNullCheckOriginalMask1015, KAMDAtomVramInfoNullCheckPatched1015, 1};
         PANIC_COND(!Patch.apply(Patcher, Slide, Size), "X6000FB", "Failed to apply null check Patch");
     } else {
         const Patcher+::MaskedLookupPatch Patches[] = {
-            {&RadeonX6000FramebufferKext, kAmdAtomVramInfoNullCheckOriginal, kAmdAtomVramInfoNullCheckPatched, 1},
-            {&RadeonX6000FramebufferKext, kAmdAtomPspDirectoryNullCheckOriginal, kAmdAtomPspDirectoryNullCheckPatched,
+            {&RadeonX6000FramebufferKext, KAMDAtomVramInfoNullCheckOriginal, KAMDAtomVramInfoNullCheckPatched, 1},
+            {&RadeonX6000FramebufferKext, KAMDAtomPspDirectoryNullCheckOriginal, KAMDAtomPspDirectoryNullCheckPatched,
                 1},
         };
         PANIC_COND(!Patcher+::MaskedLookupPatch::ApplyAll(Patcher, Patches, Slide, Size), "X6000FB",
@@ -289,7 +289,168 @@ void VanGogh::X6000FB::ProcessKext(KernelPatcher &Patcher, size_t ID, mach_vm_ad
     DBGLOG("X6000FB", "Applied DDI Caps patches");
 
     // XX: DCN 2 and newer have 6 display pipes, while DCN 1 (which is what Raven has) has only 4.
-    // We need to Patch the kext to create only 4 cursors, links and underflow trackers.
+    // We need to patch the kext to create only 4 cursors, links and underflow trackers.
     
     // Actually no we do not because this is Van Gogh which uses DCN 3 Lolz!
+}
+
+UInt16 VanGogh::X6000FB::GetEnumeratedRevision() { return NDeck::Singleton().GetEnumRevision(); }
+
+IOReturn VanGogh::X6000FB::PopulateVRAMInfo(void *, void *FwInfo) {
+    UInt32 ChannelCount = 1;
+    auto *Table = NDeck::Singleton().GetVBIOSDataTable<IGPSystemInfo>(0x1E);
+    UInt8 MemoryType = 0;
+    if (Table)
+    {
+        DBGLOG("X6000FB", "Fetching VRAM info from iGPU System Info");
+        switch (Table->header.formatRev)
+        {
+            case 1:
+                switch (Table->header.contentRev)
+                {
+                    case 11:
+                    case 12:
+                        if (Table->infoV11.umaChannelCount) { ChannelCount = Table->infoV11.umaChannelCount; }
+                        MemoryType = Table->infoV11.MemoryType;
+                        break;
+                    default:
+                        DBGLOG("X6000FB", "Unsupported contentRev %d", Table->header.contentRev);
+                        break;
+                }
+                break;
+            case 2:
+                switch (Table->header.contentRev)
+                {
+                    case 1:
+                    case 2:
+                        if (Table->infoV2.umaChannelCount) { ChannelCount = Table->infoV2.umaChannelCount; }
+                        MemoryType = Table->infoV2.MemoryType;
+                        break;
+                    default:
+                        DBGLOG("X6000FB", "Unsupported contentRev %d", Table->header.contentRev);
+                        break;
+                }
+                break;
+            default:
+                DBGLOG("X6000FB", "Unsupported formatRev %d", Table->header.formatRev);
+                break;
+        }
+    }
+    else
+    {
+        DBGLOG("X6000FB", "No iGPU System Info in Master Data Table");
+    }
+    auto &VideoMemoryType = getMember<UInt32>(FwInfo, 0x1C);
+    switch (MemoryType)
+    {
+        case kLPDDR5MemType:
+            // The boys over at AMD who made the macOS kexts doesn't know what DDR5 or LPDDR5 is so we'll default to DDR4
+            VideoMemoryType = kVideoMemoryTypeDDR4;
+            break;
+        default:
+            DBGLOG("X6000FB", "Unsupported memory type %d. Assuming DDR4", MemoryType);
+            VideoMemoryType = kVideoMemoryTypeDDR4;
+            break;
+    }
+    getMember<UInt32>(FwInfo, 0x20) = ChannelCount * 64;    // VRAM Width (64-bit channels)
+    return kIOReturnSuccess;
+}
+
+UInt32 VanGogh::X6000FB::WrapGetNumberOfConnectors(void *ThatIGuess)
+{
+    if (!Singleton().fixedVBIOS)
+    {
+        Singleton().fixedVBIOS = true;
+        struct DispObjInfoTableV1_4 *objInfo = getMember<DispObjInfoTableV1_4 *>(ThatIGuess, 0x28);
+        if (objInfo->formatRev == 1 && (objInfo->contentRev == 4 || objInfo->contentRev == 5))
+        {
+            DBGLOG("X6000FB", "getNumberOfConnectors: Fixing VBIOS connectors");
+            auto n = objInfo->pathCount;
+            for (size_t i = 0, j = 0; i < n; i++)
+            {
+                // Skip invalid device tags
+                if (objInfo->paths[i].devTag) {
+                    objInfo->paths[j++] = objInfo->paths[i];
+                } else {
+                    objInfo->pathCount--;
+                }
+            }
+        }
+    }
+    return FunctionCast(WrapGetNumberOfConnectors, Singleton().orgGetNumberOfConnectors)(ThatIGuess);
+}
+
+bool VanGogh::X6000FB::WrapIH40IVRingInitHardware(void *CTX, void *Param2)
+{
+    auto ReturnValue = FunctionCast(WrapIH40IVRingInitHardware, Singleton().orgIH40IVRingInitHardware)(CTX, Param2);
+    NDeck::Singleton().WriteRegion32Bit(IH_CHICKEN, NDeck::Singleton().ReadRegion32Bit(IH_CHICKEN) | IH_MC_SPACE_GPA_ENABLE);
+    return ReturnValue;
+}
+
+void VanGogh::X6000FB::WrapIRQMGRWriteRegister(void *CTX, UInt64 Index, UInt32 Value)
+{
+    if (Index == IH_CLK_CTRL)
+    {
+        if ((Value & (1U << IH_DBUS_MUX_CLK_SOFT_OVERRIDE_SHIFT)) != 0)
+        {
+            Value |= (1U << IH_IH_BUFFER_MEM_CLK_SOFT_OVERRIDE_SHIFT);
+        }
+    }
+    FunctionCast(WrapIRQMGRWriteRegister, Singleton().orgIRQMGRWriteRegister)(CTX, Index, Value);
+}
+
+void *VanGogh::X6000FB::WrapCreateRegisterAccess(void *InitData)
+{
+    getMember<UInt32>(InitData, 0x24) = SMUIO_BASE_0 + ROM_INDEX;
+    getMember<UInt32>(InitData, 0x28) = SMUIO_BASE_0 + ROM_DATA;
+    return FunctionCast(WrapCreateRegisterAccess, Singleton().orgCreateRegisterAccess)(InitData);
+}
+
+IOReturn VanGogh::X6000FB::InitializeReservedVRAM(void *ThatIGuess)
+{
+    static constexpr IOOptionBits VramMappingOptions = kIOMapWriteCombineCache | kIOMapAnywhere;
+    auto ReturnValue =
+        Singleton().orgMapMemorySubRange(ThatIGuess, KAMDReservedMemorySelectorCursor1_32bpp, 0, 0x40000, VramMappingOptions);
+    if (ReturnValue != kIOReturnSuccess) { return ReturnValue; }
+    ReturnValue = Singleton().orgMapMemorySubRange(ThatIGuess, KAMDReservedMemorySelectorCursor1_2bpp, 0x40000, 0x40000,
+        VramMappingOptions);
+    if (ReturnValue != kIOReturnSuccess) { return ReturnValue; }
+    ReturnValue = Singleton().orgMapMemorySubRange(ThatIGuess, KAMDReservedMemorySelectorCursor2_32bpp, 0x80000, 0x40000,
+        VramMappingOptions);
+    if (ReturnValue != kIOReturnSuccess) { return ReturnValue; }
+    ReturnValue = Singleton().orgMapMemorySubRange(ThatIGuess, KAMDReservedMemorySelectorCursor2_2bpp, 0xC0000, 0x40000,
+        VramMappingOptions);
+    if (ReturnValue != kIOReturnSuccess) { return ReturnValue; }
+    ReturnValue = Singleton().orgMapMemorySubRange(ThatIGuess, KAMDReservedMemorySelectorCursor3_32bpp, 0x100000, 0x40000,
+        VramMappingOptions);
+    if (ReturnValue != kIOReturnSuccess) { return ReturnValue; }
+    ReturnValue = Singleton().orgMapMemorySubRange(ThatIGuess, KAMDReservedMemorySelectorCursor3_2bpp, 0x140000, 0x40000,
+        VramMappingOptions);
+    if (ReturnValue != kIOReturnSuccess) { return ReturnValue; }
+    ReturnValue = Singleton().orgMapMemorySubRange(ThatIGuess, KAMDReservedMemorySelectorCursor4_32bpp, 0x180000, 0x40000,
+        VramMappingOptions);
+    if (ReturnValue != kIOReturnSuccess) { return ReturnValue; }
+    ReturnValue = Singleton().orgMapMemorySubRange(ThatIGuess, KAMDReservedMemorySelectorCursor4_2bpp, 0x1C0000, 0x40000,
+        VramMappingOptions);
+    if (ReturnValue != kIOReturnSuccess) { return ReturnValue; }
+    ReturnValue = Singleton().orgMapMemorySubRange(ThatIGuess, KAMDReservedMemorySelectorCursor5_32bpp, 0x200000, 0x40000,
+        VramMappingOptions);
+    if (ReturnValue != kIOReturnSuccess) { return ReturnValue; }
+    ReturnValue = Singleton().orgMapMemorySubRange(ThatIGuess, KAMDReservedMemorySelectorCursor5_2bpp, 0x240000, 0x40000,
+        VramMappingOptions);
+    if (ReturnValue != kIOReturnSuccess) { return ReturnValue; }
+    ReturnValue = Singleton().orgMapMemorySubRange(ThatIGuess, KAMDReservedMemorySelectorCursor6_32bpp, 0x280000, 0x40000,
+        VramMappingOptions);
+    if (ReturnValue != kIOReturnSuccess) { return ReturnValue; }
+    ReturnValue = Singleton().orgMapMemorySubRange(ThatIGuess, KAMDReservedMemorySelectorCursor6_2bpp, 0x2C0000, 0x40000,
+        VramMappingOptions);
+    if (ReturnValue != kIOReturnSuccess) { return ReturnValue; }
+    ReturnValue = Singleton().orgMapMemorySubRange(ThatIGuess, KAMDReservedMemorySelectorPPLIBReserved, 0x300000, 0x100000,
+        VramMappingOptions);
+    if (ReturnValue != kIOReturnSuccess) { return ReturnValue; }
+    ReturnValue = Singleton().orgMapMemorySubRange(ThatIGuess, KAMDReservedMemorySelectorDMCUBReserved, 0x400000, 0x100000,
+        VramMappingOptions);
+    if (ReturnValue != kIOReturnSuccess) { return ReturnValue; }
+    return Singleton().orgMapMemorySubRange(ThatIGuess, KAMDReservedMemorySelectorReserveVRAM, 0, 0x500000,
+        VramMappingOptions);
 }

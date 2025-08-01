@@ -58,7 +58,7 @@ void Hotfixes::AGDP::ProcessKext(KernelPatcher &Patcher, size_t ID, mach_vm_addr
     const Patcher+::MaskedLookupPatch boardIdPatch {&AGDPKext, KAGDPBoardIDKeyOriginal, KAGDPBoardIDKeyPatched, 1};
     SYSLOG_COND(!boardIdPatch.apply(Patcher, Slide, Size), "AGDP", "Failed to apply AGDP board-ID Patch");
 
-    if (NDeck::Singleton().GetAttributes().IsVentura())
+    if (NDeck::Singleton().GetAttributes().IsVenturaB())
     {
         const Patcher+::MaskedLookupPatch Patch {&AGDPKext, KAGDPFBCountCheckOriginal13, KAGDPFBCountCheckPatched13,
             1};

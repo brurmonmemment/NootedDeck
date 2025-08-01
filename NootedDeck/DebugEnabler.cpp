@@ -149,7 +149,7 @@ void DebugEnabler::ProcessX6000FB(KernelPatcher &Patcher, size_t ID, mach_vm_add
     MachInfo::setKernelWriting(false, KernelPatcher::kernelWriteLock);
 
     // Enable all Display Core logs... soon
-    /* if (NDeck::Singleton().getAttributes().isCatalina()) {
+    /* if (NDeck::Singleton().GetAttributes().IsCatalinaB()) {
         const Patcher+::MaskedLookupPatch Patch {&RadeonX6000FramebufferKext, kInitPopulateDcInitDataCatalinaOriginal,
             kInitPopulateDcInitDataCatalinaPatched, 1};
         PANIC_COND(!Patch.apply(Patcher, Slide, Size), "DebugEnabler",
@@ -171,7 +171,7 @@ void DebugEnabler::ProcessKext(KernelPatcher &Patcher, size_t ID, mach_vm_addres
 {
     if (RadeonX6000FramebufferKext.loadIndex == ID)
     {
-        this->processX6000FB(Patcher, ID, Slide, Size);
+        this->ProcessX6000FB(Patcher, ID, Slide, Size);
     }
 }
 

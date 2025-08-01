@@ -79,15 +79,15 @@ void NDeck::StartModule()
     }
     
     SYSLOG("NDeck", "Module loaded successfully!")
-    // DBGLOG("NDeck", "Catalina = %s", this->Attributes.IsCatalina() ? "Yes" : "No");    like i said before, no catalina yet
-    DBGLOG("NDeck", "BigSurPlus = %s", this->Attributes.IsBigSurPlus() ? "Yes" : "No");
-    DBGLOG("NDeck", "Monterey = %s", this->Attributes.IsMonterey() ? "Yes" : "No");
-    DBGLOG("NDeck", "MontereyPlus = %s", this->Attributes.IsMontereyPlus() ? "Yes" : "No");
-    DBGLOG("NDeck", "Ventura = %s", this->Attributes.IsVentura() ? "Yes" : "No");
-    DBGLOG("NDeck", "VenturaPlus = %s", this->Attributes.IsVenturaPlus() ? "Yes" : "No");
-    DBGLOG("NDeck", "Ventura1304Based = %s", this->Attributes.IsVentura1304Based() ? "Yes" : "No");
-    DBGLOG("NDeck", "Ventura1304Plus = %s", this->Attributes.IsVentura1304Plus() ? "Yes" : "No");
-    DBGLOG("NDeck", "Sonoma1404Plus = %s", this->Attributes.IsSonoma1404Plus() ? "Yes" : "No");
+    // DBGLOG("NDeck", "Catalina = %s", this->Attributes.IsCatalinaB() ? "Yes" : "No");    like i said before, no catalina yet
+    DBGLOG("NDeck", "BigSurPlus = %s", this->Attributes.IsBigSurPlusB() ? "Yes" : "No");
+    DBGLOG("NDeck", "Monterey = %s", this->Attributes.IsMontereyB() ? "Yes" : "No");
+    DBGLOG("NDeck", "MontereyPlus = %s", this->Attributes.IsMontereyPlusB() ? "Yes" : "No");
+    DBGLOG("NDeck", "Ventura = %s", this->Attributes.IsVenturaB() ? "Yes" : "No");
+    DBGLOG("NDeck", "VenturaPlus = %s", this->Attributes.IsVenturaPlusB() ? "Yes" : "No");
+    DBGLOG("NDeck", "Ventura1304Based = %s", this->Attributes.IsVentura1304BasedB() ? "Yes" : "No");
+    DBGLOG("NDeck", "Ventura1304Plus = %s", this->Attributes.IsVentura1304PlusB() ? "Yes" : "No");
+    DBGLOG("NDeck", "Sonoma1404Plus = %s", this->Attributes.IsSonoma1404PlusB() ? "Yes" : "No");
     DBGLOG("NDeck", "If any of the values above look incorrect, please mention this on GitHub via Issues.");
 
     Hotfixes::AGDP::Singleton().StartModule();
