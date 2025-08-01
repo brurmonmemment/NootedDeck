@@ -138,23 +138,23 @@ void Backlight::ProcessKext(KernelPatcher &Patcher, size_t ID, mach_vm_address_t
     {
         if (NDeck::Singleton().GetAttributes().IsSonoma1404PlusB())
         {
-            Patcher+::PatternSolveRequest solveRequest {"_dc_link_set_backlight_level",
+            Patcher+::PatternSolveRequest SolveRequest {"_dc_link_set_backlight_level",
                 this->OrgDcLinkSetBacklightLevel, KDcLinkSetBacklightLevelPattern1404};
-            PANIC_COND(!solveRequest.solve(Patcher, ID, Slide, size), "Backlight",
+            PANIC_COND(!SolveRequest.solve(Patcher, ID, Slide, size), "Backlight",
                 "Failed to resolve dc_link_set_backlight_level");
         }
         else
         {
-            Patcher+::PatternSolveRequest solveRequest {"_dc_link_set_backlight_level",
+            Patcher+::PatternSolveRequest SolveRequest {"_dc_link_set_backlight_level",
                 this->OrgDcLinkSetBacklightLevel, KDcLinkSetBacklightLevelPattern};
-            PANIC_COND(!solveRequest.solve(Patcher, ID, Slide, size), "Backlight",
+            PANIC_COND(!SolveRequest.solve(Patcher, ID, Slide, size), "Backlight",
                 "Failed to resolve dc_link_set_backlight_level");
         }
 
-        Patcher+::PatternSolveRequest solveRequest {"_dc_link_set_backlight_level_nits",
+        Patcher+::PatternSolveRequest SolveRequest {"_dc_link_set_backlight_level_nits",
             this->OrgDcLinkSetBacklightLevelNits, KDcLinkSetBacklightLevelNitsPattern,
             KDcLinkSetBacklightLevelNitsPatternMask};
-        PANIC_COND(!solveRequest.solve(Patcher, ID, Slide, size), "Backlight",
+        PANIC_COND(!SolveRequest.solve(Patcher, ID, Slide, size), "Backlight",
             "Failed to resolve dc_link_set_backlight_level_nits");
         Patcher+::PatternRouteRequest Requests[] =
         {
@@ -175,8 +175,8 @@ void Backlight::ProcessKext(KernelPatcher &Patcher, size_t ID, mach_vm_address_t
         {
             static const UInt8 find[] = "F%uT%04x";
             static const UInt8 replace[] = "F%uTxxxx";
-            const Patcher+::MaskedLookupPatch patch {&BacklightKext, find, replace, 1};
-            SYSLOG_COND(!patch.apply(Patcher, Slide, size), "Backlight", "Failed to apply backlight patch");
+            const Patcher+::MaskedLookupPatch Patch {&BacklightKext, find, replace, 1};
+            SYSLOG_COND(!Patch.Apply(Patcher, Slide, size), "Backlight", "Failed to apply backlight patch");
         }
         Patcher.clearError();
     }

@@ -2,10 +2,12 @@
 
 #pragma once
 #include <Headers/kern_patcher.hpp>
-#include <PrivateHeaders/GPUDriversAMD/FB/AmdDeviceMemoryManager.hpp>
+#include <KextHeaders/AMDGPUDrivers/FB/AmdDeviceMemoryManager.hpp>
 
-namespace VanGogh {
-    class X6000FB {
+namespace VanGogh
+{
+    class X6000FB
+    {
         using mapMemorySubRange_t = IOReturn (*)(void *ThatIGuess, AmdReservedMemorySelector Selector, size_t AtOffset,
             size_t WithSize, IOOptionBits AndAttributes);
 
