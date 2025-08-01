@@ -3,13 +3,13 @@
 #include <KextHeaders/NDeck.hpp>
 #include <KextHeaders/Patcher+.hpp>
 
-static const char *RadeonX6000FramebufferPath =
+static const char *RadeonX6000Framebuffer =
     "/System/Library/Extensions/AMDRadeonX6000Framebuffer.kext/Contents/MacOS/AMDRadeonX6000Framebuffer";
 
 static KernelPatcher::KextInfo RadeonX6000FramebufferKext
 {
     "com.apple.kext.AMDRadeonX6000Framebuffer",
-    &RadeonX6000FramebufferPath,
+    &RadeonX6000Framebuffer,
     1,
     {true},
     {},

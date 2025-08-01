@@ -87,7 +87,8 @@ enum GPUDebugPolicy {
     DISABLE_PREEMPTION = 0x80000000,
 };
 
-void DebugEnabler::StartModule() {
+void DebugEnabler::StartModule()
+{
     PANIC_COND(this->ModuleLoaded, "DebugEnabler", "Attempted to load module twice!");
     this->ModuleLoaded = true;
 
@@ -210,9 +211,12 @@ void DebugEnabler::DMLoggerWrite(void *, const UInt32 LogType, const char *FMT, 
     vsnprintf(Message, 0x1000, FMT, VA);
     va_end(VA);
     auto *Epilogue = Message[strnlen(Message, 0x1000) - 1] == '\n' ? "" : "\n";
-    if (LogType < arrsize(LogTypes)) {
+    if (LogType < arrsize(LogTypes))
+    {
         kprintf("[%s]\t%s%s", LogTypes[LogType], Message, Epilogue);
-    } else {
+    }
+    else
+    {
         kprintf("%s%s", Message, Epilogue);
     }
     IOFree(Message, 0x1000);
