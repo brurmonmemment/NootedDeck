@@ -16,6 +16,10 @@
 #include <KextHeaders/SKU.hpp>
 #include <KextHeaders/NDeck.hpp>
 #include <KextHeaders/Patcher+.hpp>
+#include <KextHeaders/VanGogh/AppleGFXHDA.hpp>
+#include <KextHeaders/VanGogh/IPOffset.hpp>
+#include <KextHeaders/VanGogh/X6000.hpp>
+#include <KextHeaders/VanGogh/X6000FB.hpp>
 
 // Module logic
 
@@ -90,6 +94,9 @@ void NDeck::StartModule()
     Hotfixes::X6000FB::Singleton().StartModule();
     Backlight::Singleton().StartModule();
     DebugEnabler::Singleton().StartModule();
+    VanGogh::X6000FB::Singleton().StartModule();
+    VanGogh::AppleGFXHDA::Singleton().StartModule();
+    VanGogh::X6000::Singleton().StartModule();
 
     lilu.onPatcherLoadForce([](void *User, KernelPatcher &Patcher) { static_cast<NDeck *>(User)->ProcessPatcher(Patcher); }, this);
 }
