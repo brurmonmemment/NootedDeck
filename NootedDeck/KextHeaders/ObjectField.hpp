@@ -26,21 +26,21 @@ class ObjectField {
 
     inline ObjectField<T> operator+(const UInt32 Value)
     {
-        PANIC_COND(this->Offset == InvalidOffset, "ObjField", "Uninitialised");
+        PANIC_COND(this->Offset == InvalidOffset, "ObjField", "Uninitialized");
         return ObjectField<T> {this->Offset + Value};
     }
 
     inline T &get(void *const Object)
     {
         PANIC_COND(Object == nullptr, "ObjField", "Object parameter is null");
-        PANIC_COND(this->Offset == InvalidOffset, "ObjField", "Uninitialised");
+        PANIC_COND(this->Offset == InvalidOffset, "ObjField", "Uninitialized");
         return getMember<T>(Object, this->Offset);
     }
 
     inline void set(void *const Object, const T Value)
     {
         PANIC_COND(Object == nullptr, "ObjField", "Object parameter is null");
-        PANIC_COND(this->Offset == InvalidOffset, "ObjField", "Uninitialised");
+        PANIC_COND(this->Offset == InvalidOffset, "ObjField", "Uninitialized");
         getMember<T>(Object, this->Offset) = Value;
     }
 };

@@ -52,8 +52,8 @@ void Hotfixes::X6000FB::StartModule()
 
     lilu.onKextLoadForce(
         &RadeonX6000FramebufferKext, 1,
-        [](void *user, KernelPatcher &Patcher, size_t ID, mach_vm_address_t Slide, size_t Size) {
-            static_cast<Hotfixes::X6000FB *>(user)->ProcessKext(Patcher, ID, Slide, Size);
+        [](void *User, KernelPatcher &Patcher, size_t ID, mach_vm_address_t Slide, size_t Size) {
+            static_cast<Hotfixes::X6000FB *>(User)->ProcessKext(Patcher, ID, Slide, Size);
         },
         this);
 }

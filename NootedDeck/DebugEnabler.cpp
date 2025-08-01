@@ -13,7 +13,8 @@
 static const char *RadeonX6000Framebuffer =
     "/System/Library/Extensions/AMDRadeonX6000Framebuffer.kext/Contents/MacOS/AMDRadeonX6000Framebuffer";
 
-static KernelPatcher::KextInfo RadeonX6000FramebufferKext {
+static KernelPatcher::KextInfo RadeonX6000FramebufferKext
+{
     "com.apple.kext.AMDRadeonX6000Framebuffer",
     &RadeonX6000Framebuffer,
     1,
@@ -37,7 +38,7 @@ static const UInt8 KDalDmLoggerShouldLogPartialPatternMask[] = {0xFF, 0xFF, 0xFF
 
 // X6000FB: Enable all Display Core logs.
 static const UInt8 KInitPopulateDcInitDataOriginal[] = {0x48, 0xB9, 0xDB, 0x1B, 0xFF, 0x7E, 0x10, 0x00, 0x00, 0x00};
-static const UInt8 KInitPopulateDcInitDataPatched[] = {0x48, 0xB9, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+static const UInt8 KInitPopulateDcInitDataPatched[]  = {0x48, 0xB9, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
 
 // Enable more Display Core logs on Catalina (not sure how to enable all of them yet and also commented out because of the unknown Catalina support).
 /* static const UInt8 KInitPopulateDcInitDataCatalinaOriginal[] = {0x48, 0xC7, 0x87, 0x20, 0x02, 0x00, 0x00, 0xDB, 0x1B,
@@ -47,11 +48,11 @@ static const UInt8 KInitPopulateDcInitDataCatalinaPatched[] = {0x48, 0xC7, 0x87,
 
 // Enable all AmdBiosParserHelper logs.
 static const UInt8 KBIOSParserHelperInitWithDataOriginal[] = {0x08, 0xC7, 0x07, 0x01, 0x00, 0x00, 0x00};
-static const UInt8 KBIOSParserHelperInitWithDataPatched[] = {0x08, 0xC7, 0x07, 0xFF, 0x00, 0x00, 0x00};
+static const UInt8 KBIOSParserHelperInitWithDataPatched[]  = {0x08, 0xC7, 0x07, 0xFF, 0x00, 0x00, 0x00};
 
 // HWLibs: Enable all MCIL debug prints (debugLevel = 0xFFFFFFFF, mostly for PP_Log).
-static const UInt8 kAtiPowerPlayServicesConstructorOriginal[] = {0x8B, 0x40, 0x60, 0x48, 0x8D};
-static const UInt8 kAtiPowerPlayServicesConstructorPatched[] = {0x83, 0xC8, 0xFF, 0x48, 0x8D};
+static const UInt8 KATIPowerPlayServicesConstructorOriginal[] = {0x8B, 0x40, 0x60, 0x48, 0x8D};
+static const UInt8 KATIPowerPlayServicesConstructorPatched[]  = {0x83, 0xC8, 0xFF, 0x48, 0x8D};
 
 // Enable printing of all PSP event logs.
 static const UInt8 KAMDLogPspOriginal[] = {0x83, 0x00, 0x02, 0x0F, 0x85, 0x00, 0x00, 0x00, 0x00, 0x41, 0x00, 0x00, 0x00,
@@ -70,14 +71,16 @@ static DebugEnabler Instance {};
 
 DebugEnabler &DebugEnabler::Singleton() { return Instance; }
 
-enum GPUChannelDebugPolicy {
+enum GPUChannelDebugPolicy
+{
     CHANNEL_WAIT_FOR_PM4_IDLE = 0x1,
     CHANNEL_WAIT_FOR_TS_AFTER_SUBMISSION = 0x2,
     // 0x8, 0x10 = ??, PM4-related
     CHANNEL_DISABLE_PREEMPTION = 0x20,
 };
 
-enum GPUDebugPolicy {
+enum GPUDebugPolicy
+{
     WAIT_FOR_PM4_IDLE = 0x1,
     WAIT_FOR_TS_AFTER_SUBMISSION = 0x2,
     PANIC_AFTER_DUMPING_LOG = 0x4,
@@ -100,9 +103,9 @@ void DebugEnabler::StartModule()
 
     lilu.onKextLoadForce(
         nullptr, 0,
-        [](void *user, KernelPatcher &Patcher, size_t ID, mach_vm_address_t Slide, size_t Size)
+        [](void *User, KernelPatcher &Patcher, size_t ID, mach_vm_address_t Slide, size_t Size)
         {
-            static_cast<DebugEnabler *>(user)->ProcessKext(Patcher, ID, Slide, Size);
+            static_cast<DebugEnabler *>(User)->ProcessKext(Patcher, ID, Slide, Size);
         },
     this);
 }
@@ -135,13 +138,13 @@ void DebugEnabler::ProcessX6000FB(KernelPatcher &Patcher, size_t ID, mach_vm_add
     if (LogEnableMaskMinors == nullptr)
     {
         size_t Offset = 0;
-        PANIC_COND(!KernelPatcher::findPattern(kDalDmLoggerShouldLogPartialPattern,
-                       kDalDmLoggerShouldLogPartialPatternMask, arrsize(kDalDmLoggerShouldLogPartialPattern),
+        PANIC_COND(!KernelPatcher::findPattern(KDalDmLoggerShouldLogPartialPattern,
+                       KDalDmLoggerShouldLogPartialPatternMask, arrsize(KDalDmLoggerShouldLogPartialPattern),
                        reinterpret_cast<const void *>(Slide), Size, &Offset),
             "DebugEnabler", "Failed to solve LogEnableMaskMinors");
-        auto *instAddr = reinterpret_cast<UInt8 *>(Slide + Offset);
+        auto *InstAddress = reinterpret_cast<UInt8 *>(Slide + Offset);
         // inst + instSize + imm32 = addr
-        LogEnableMaskMinors = instAddr + 7 + *reinterpret_cast<SInt32 *>(instAddr + 3);
+        LogEnableMaskMinors = InstAddress + 7 + *reinterpret_cast<SInt32 *>(InstAddress + 3);
     }
     PANIC_COND(MachInfo::setKernelWriting(true, KernelPatcher::kernelWriteLock) != KERN_SUCCESS, "DebugEnabler",
         "Failed to enable kernel writing");
@@ -149,20 +152,23 @@ void DebugEnabler::ProcessX6000FB(KernelPatcher &Patcher, size_t ID, mach_vm_add
     MachInfo::setKernelWriting(false, KernelPatcher::kernelWriteLock);
 
     // Enable all Display Core logs... soon
-    /* if (NDeck::Singleton().GetAttributes().IsCatalinaB()) {
-        const Patcher+::MaskedLookupPatch Patch {&RadeonX6000FramebufferKext, kInitPopulateDcInitDataCatalinaOriginal,
-            kInitPopulateDcInitDataCatalinaPatched, 1};
+    /* if (NDeck::Singleton().GetAttributes().IsCatalinaB())
+    {
+        const Patcher+::MaskedLookupPatch Patch {&RadeonX6000FramebufferKext, KInitPopulateDcInitDataCatalinaOriginal,
+            KInitPopulateDcInitDataCatalinaPatched, 1};
         PANIC_COND(!Patch.apply(Patcher, Slide, Size), "DebugEnabler",
             "Failed to apply populateDcInitData Patch (10.15)");
-    } else { */
-        const Patcher+::MaskedLookupPatch Patch {&RadeonX6000FramebufferKext, kInitPopulateDcInitDataOriginal,
-            kInitPopulateDcInitDataPatched, 1};
+    }
+    else
+    { */
+        const Patcher+::MaskedLookupPatch Patch {&RadeonX6000FramebufferKext, KInitPopulateDcInitDataOriginal,
+            KInitPopulateDcInitDataPatched, 1};
         PANIC_COND(!Patch.apply(Patcher, Slide, Size), "DebugEnabler", "Failed to apply populateDcInitData patch");
     // }
 
     // Enable all bios parser logs
-    const Patcher+::MaskedLookupPatch Patch {&RadeonX6000FramebufferKext, kBiosParserHelperInitWithDataOriginal,
-        kBiosParserHelperInitWithDataPatched, 1};
+    const Patcher+::MaskedLookupPatch Patch {&RadeonX6000FramebufferKext, KBIOSParserHelperInitWithDataOriginal,
+        KBIOSParserHelperInitWithDataPatched, 1};
     PANIC_COND(!Patch.apply(Patcher, Slide, Size), "DebugEnabler",
         "Failed to apply AmdBiosParserHelper::initWithData patch");
 }
@@ -187,14 +193,14 @@ void DebugEnabler::DoGPUPanic(void *, char const *FMT, ...)
 {
     va_list VA;
     va_start(VA, FMT);
-    auto *buf = static_cast<char *>(IOMalloc(1000));
-    bzero(buf, 1000);
-    vsnprintf(buf, 1000, FMT, VA);
+    auto *Buffer = static_cast<char *>(IOMalloc(1000));
+    bzero(Buffer, 1000);
+    vsnprintf(Buffer, 1000, FMT, VA);
     va_end(VA);
 
-    DBGLOG("DebugEnabler", "DoGPUPanic: %s", buf);
+    DBGLOG("DebugEnabler", "DoGPUPanic: %s", Buffer);
     IOSleep(10000);
-    panic("%s", buf);
+    panic("%s", Buffer);
 }
 
 static const char *LogTypes[] = {"Error", "Warning", "Debug", "DC_Interface", "DTN", "Surface", "HW_Hotplug", "HW_LKTN",

@@ -94,10 +94,10 @@ static const UInt8 KGetFirmwareInfoNullCheckPatchedMask1404[] = {0x00, 0x00, 0x0
     0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00};
 
 // Tell AGDC that we're an iGPU.
-static const UInt8 KGetVendorInfoOriginal[] = {0x48, 0x00, 0x02, 0x10, 0x00, 0x00, 0x02};
-static const UInt8 KGetVendorInfoMask[] = {0xFF, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
-static const UInt8 KGetVendorInfoPatched[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01};
-static const UInt8 KGetVendorInfoPatchedMask[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF};
+static const UInt8 KGetVendorInfoOriginal[]     = {0x48, 0x00, 0x02, 0x10, 0x00, 0x00, 0x02};
+static const UInt8 KGetVendorInfoMask[]         = {0xFF, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+static const UInt8 KGetVendorInfoPatched[]      = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01};
+static const UInt8 KGetVendorInfoPatchedMask[]  = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF};
 static const UInt8 KGetVendorInfoOriginal1404[] = {0xC7, 0x00, 0x24, 0x02, 0x10, 0x00, 0x00, 0xC7, 0x00, 0x28, 0x02,
     0x00, 0x00, 0x00};
 static const UInt8 KGetVendorInfoMask1404[] = {0xFF, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0xFF, 0xFF, 0xFF,
@@ -109,7 +109,7 @@ static const UInt8 KGetVendorInfoPatchedMask1404[] = {0x00, 0x00, 0x00, 0x00, 0x
 
 // Remove check for Navi family
 static const UInt8 KInitializeDmcubServices1Original[] = {0x81, 0x79, 0x2C, 0x8F, 0x00, 0x00, 0x00};
-static const UInt8 KInitializeDmcubServices1Patched[] = {0x39, 0xC0, 0x66, 0x90, 0x66, 0x90, 0x90};
+static const UInt8 KInitializeDmcubServices1Patched[]  = {0x39, 0xC0, 0x66, 0x90, 0x66, 0x90, 0x90};
 
 // Set DMCUB ASIC constant to DCN 2.1
 static const UInt8 KInitializeDmcubServices2Original[] = {0x83, 0xC0, 0xC4, 0x83, 0xF8, 0x0A, 0xB8, 0x03, 0x00, 0x00,
@@ -125,11 +125,11 @@ static const UInt8 KInitializeDmcubServices2Patched1404[] = {0xB9, 0x02, 0x00, 0
 
 /* // Ditto, 10.15
 static const UInt8 KInitializeDmcubServices2Original1015[] = {0xC7, 0x46, 0x20, 0x01, 0x00, 0x00, 0x00};
-static const UInt8 KInitializeDmcubServices2Patched1015[] = {0xC7, 0x46, 0x20, 0x02, 0x00, 0x00, 0x00};
+static const UInt8 KInitializeDmcubServices2Patched1015[]  = {0xC7, 0x46, 0x20, 0x02, 0x00, 0x00, 0x00};
 
 // 10.15: Set inst_const_size/bss_data_size to 0. To disable DMCUB firmware loading logic.
 static const UInt8 KInitializeHardware1Original[] = {0x49, 0xBC, 0x00, 0x0A, 0x01, 0x00, 0xF4, 0x01, 0x00, 0x00};
-static const UInt8 KInitializeHardware1Patched[] = {0x49, 0xC7, 0xC4, 0x00, 0x00, 0x00, 0x00, 0x90, 0x90, 0x90};
+static const UInt8 KInitializeHardware1Patched[]  = {0x49, 0xC7, 0xC4, 0x00, 0x00, 0x00, 0x00, 0x90, 0x90, 0x90};
 
 // 10.15: Set fw_inst_const to nullptr, pt.2 of above.
 static const UInt8 KInitializeHardware2Original[] = {0x4C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x4C, 0x00, 0x00, 0x10,
@@ -152,34 +152,34 @@ static const UInt8 KAMDDalServicesInitializePatchedMask[] = {0x00, 0xFF, 0xFF, 0
     0x00, 0x00, 0x00, 0x00}; */ // Catalina Logic
 
 /* // Raven: Change cursor and underflow tracker count to 4 instead of 6.
-static const UInt8 KCreateControllerServicesOriginal[] = {0x40, 0x00, 0x00, 0x40, 0x83, 0x00, 0x06};
+static const UInt8 KCreateControllerServicesOriginal[]     = {0x40, 0x00, 0x00, 0x40, 0x83, 0x00, 0x06};
 static const UInt8 KCreateControllerServicesOriginalMask[] = {0xF0, 0x00, 0x00, 0xF0, 0xFF, 0x00, 0xFF};
-static const UInt8 KCreateControllerServicesPatched[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04};
-static const UInt8 KCreateControllerServicesPatchedMask[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0F};        // Commented out Raven logic for now, might or might not need later
+static const UInt8 KCreateControllerServicesPatched[]      = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04};
+static const UInt8 KCreateControllerServicesPatchedMask[]  = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0F};        // Commented out Raven logic for now, might or might not need later
 
 // Ditto, 10.15.
-static const UInt8 KCreateControllerServicesOriginal1015[] = {0x48, 0x00, 0x00, 0x48, 0x83, 0x00, 0x05};
+static const UInt8 KCreateControllerServicesOriginal1015[]     = {0x48, 0x00, 0x00, 0x48, 0x83, 0x00, 0x05};
 static const UInt8 KCreateControllerServicesOriginalMask1015[] = {0xFF, 0x00, 0x00, 0xFF, 0xFF, 0x00, 0xFF};
-static const UInt8 KCreateControllerServicesPatched1015[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03};
-static const UInt8 KCreateControllerServicesPatchedMask1015[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0F}; */ // More catalina shiz
+static const UInt8 KCreateControllerServicesPatched1015[]      = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03};
+static const UInt8 KCreateControllerServicesPatchedMask1015[]  = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0F}; */ // More catalina shiz
 
 /* // Raven: Change cursor count to 4 instead of 6.
-static const UInt8 KSetupCursorsOriginal[] = {0x40, 0x83, 0x00, 0x05};
+static const UInt8 KSetupCursorsOriginal[]     = {0x40, 0x83, 0x00, 0x05};
 static const UInt8 KSetupCursorsOriginalMask[] = {0xF0, 0xFF, 0x00, 0xFF};
-static const UInt8 KSetupCursorsPatched[] = {0x00, 0x00, 0x00, 0x03};
-static const UInt8 KSetupCursorsPatchedMask[] = {0x00, 0x00, 0x00, 0x0F}; */ // Commented out Raven logic for now, might or might not need later
+static const UInt8 KSetupCursorsPatched[]      = {0x00, 0x00, 0x00, 0x03};
+static const UInt8 KSetupCursorsPatchedMask[]  = {0x00, 0x00, 0x00, 0x0F}; */ // Commented out Raven logic for now, might or might not need later
 
 // Ditto, 12.0+.
-static const UInt8 KSetupCursorsOriginal12[] = {0x40, 0x83, 0x00, 0x06};
+static const UInt8 KSetupCursorsOriginal12[]     = {0x40, 0x83, 0x00, 0x06};
 static const UInt8 KSetupCursorsOriginalMask12[] = {0xF0, 0xFF, 0x00, 0xFF};
-static const UInt8 KSetupCursorsPatched12[] = {0x00, 0x00, 0x00, 0x04};
-static const UInt8 KSetupCursorsPatchedMask12[] = {0x00, 0x00, 0x00, 0x0F};
+static const UInt8 KSetupCursorsPatched12[]      = {0x00, 0x00, 0x00, 0x04};
+static const UInt8 KSetupCursorsPatchedMask12[]  = {0x00, 0x00, 0x00, 0x0F};
 
 /* // Raven: Change link count to 4 instead of 6.
-static const UInt8 KCreateLinksOriginal[] = {0x06, 0x00, 0x00, 0x00, 0x40};
+static const UInt8 KCreateLinksOriginal[]     = {0x06, 0x00, 0x00, 0x00, 0x40};
 static const UInt8 KCreateLinksOriginalMask[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xF0};
-static const UInt8 KCreateLinksPatched[] = {0x04, 0x00, 0x00, 0x00, 0x00};
-static const UInt8 KCreateLinksPatchedMask[] = {0x0F, 0x00, 0x00, 0x00, 0x00}; */ // Commented out Raven logic for now, might or might not need later
+static const UInt8 KCreateLinksPatched[]      = {0x04, 0x00, 0x00, 0x00, 0x00};
+static const UInt8 KCreateLinksPatchedMask[]  = {0x0F, 0x00, 0x00, 0x00, 0x00}; */ // Commented out Raven logic for now, might or might not need later
 
 // Module logic
 
@@ -196,9 +196,9 @@ void VanGogh::X6000FB::StartModule()
 
     lilu.onKextLoadForce(
         &RadeonX6000FramebufferKext, 1,
-        [](void *user, KernelPatcher &Patcher, size_t ID, mach_vm_address_t Slide, size_t Size)
+        [](void *User, KernelPatcher &Patcher, size_t ID, mach_vm_address_t Slide, size_t Size)
         {
-            static_cast<VanGogh::X6000FB *>(user)->ProcessKext(Patcher, ID, Slide, Size);
+            static_cast<VanGogh::X6000FB *>(User)->ProcessKext(Patcher, ID, Slide, Size);
         },
     this);
 }
@@ -270,7 +270,8 @@ void VanGogh::X6000FB::ProcessKext(KernelPatcher &Patcher, size_t ID, mach_vm_ad
             KAMDAtomVramInfoNullCheckOriginalMask1015, KAMDAtomVramInfoNullCheckPatched1015, 1};
         PANIC_COND(!Patch.apply(Patcher, Slide, Size), "X6000FB", "Failed to apply null check Patch");
     } else {
-        const Patcher+::MaskedLookupPatch Patches[] = {
+        const Patcher+::MaskedLookupPatch Patches[] =
+        {
             {&RadeonX6000FramebufferKext, KAMDAtomVramInfoNullCheckOriginal, KAMDAtomVramInfoNullCheckPatched, 1},
             {&RadeonX6000FramebufferKext, KAMDAtomPspDirectoryNullCheckOriginal, KAMDAtomPspDirectoryNullCheckPatched,
                 1},

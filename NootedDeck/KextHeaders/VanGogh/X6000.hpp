@@ -4,8 +4,10 @@
 #include <Headers/kern_patcher.hpp>
 #include <KextHeaders/ObjectField.hpp>
 
-namespace VanGogh {
-    class X6000 {
+namespace VanGogh
+{
+    class X6000
+    {
         bool ModuleLoaded                            {false};
         ObjectField<UInt32> RegionBaseField          {};
         mach_vm_address_t OrgAllocateAMDHWDisplay    {0};

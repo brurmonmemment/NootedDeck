@@ -122,12 +122,12 @@ void Backlight::StartModule()
     lilu.onKextLoadForce(&BacklightKext);
     lilu.onKextLoadForce(&MCCSControlKext);
     lilu.onPatcherLoadForce(
-        [](void *user, KernelPatcher &) { static_cast<Backlight *>(user)->registerDispMaxBrightnessNotif(); }, this);
+        [](void *User, KernelPatcher &) { static_cast<Backlight *>(User)->registerDispMaxBrightnessNotif(); }, this);
     lilu.onKextLoadForce(
         nullptr, 0,
-        [](void *user, KernelPatcher &Patcher, size_t ID, mach_vm_address_t Slide, size_t Size)
+        [](void *User, KernelPatcher &Patcher, size_t ID, mach_vm_address_t Slide, size_t Size)
         {
-            static_cast<Backlight *>(user)->ProcessKext(Patcher, ID, Slide, Size);
+            static_cast<Backlight *>(User)->ProcessKext(Patcher, ID, Slide, Size);
         },
     this);
 }
