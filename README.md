@@ -33,7 +33,7 @@ after that, follow ChefKiss' roadmap to Steam Deck "greatness"
 
 |- [X] modify the model code to only include LCD and OLED ids
 
-|- [ehh, might be getting there] write van gogh specific code for X6000 and X6000 framebuffer
+|- [X] write van gogh specific code for X6000 and X6000 framebuffer
 
 |
 
