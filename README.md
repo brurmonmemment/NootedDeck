@@ -35,7 +35,7 @@ TODO: implement submodules from NootedRed, follow their roadmap to Steam Deck "g
 
 |
 
-|- [] add rdna 2 (igpu) specific code & sprinkle in some steam deck bits
+|- [] merge rdna 2 (igpu) specific code & sprinkle in some steam deck bits
 
 |
 
