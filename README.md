@@ -23,11 +23,11 @@ TODO: implement submodules from NootedRed, follow their roadmap to Steam Deck "g
 
 ### roadmap
 
-|- [] develop navi 24 support via nootrx
+|- [] develop navi 24-ish support via nootrx' navi 23 logic
 
-|- [] develop correct firmware injection logic
+|- [] rewrite firmware injection method to use the linux rips unless i can somehow figure out how to get or make the files that nootedred uses
 
-|- [X] develop improved device model name matching
+|- [X] develop improved device model name matching tailored for the LCD and OLED versions
 
 |
 
